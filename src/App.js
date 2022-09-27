@@ -1,34 +1,24 @@
-import { useState } from "react";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
-import './App.css';
-import NavBar from "./components/NavBar";
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import MenuPage from './pages/MenuPage';
-import ContactPage from './pages/ContactPage';
+import { useContext, useState } from "react";
+import Component1 from "./components/Component1";
+import Component2 from "./components/Component2";
+import AppContext from "./Context/AppContext/AppContext";
 
 function App() {
 
-  let [userAuth, setUserAuth] = useState(true)
 
-  function handleUserAuth(){
-    setUserAuth(!userAuth)
-  }
+  let appContext = useContext(AppContext);
 
+
+  
   return (
     <div className="body-wrapper">
-      
-      <NavBar/>
-     
-      <Routes>
-        <Route index element={<HomePage/>}/>
-        <Route path="/home" element={<HomePage/>}/>
-        <Route path="/menu" element={<MenuPage/>}/>
-        <Route path="/about" element={<AboutPage/>}/>
-        <Route path="/contact" element={<ContactPage/>}/>
-      </Routes>
-
-   
+      {appContext.userName}
+      <button onClick={()=>{
+        appContext.setUserName("new username")
+      }}>
+        Click Me
+      </button>
+      <Component2/>
     </div>
   );
 }
