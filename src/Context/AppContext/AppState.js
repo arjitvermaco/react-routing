@@ -6,6 +6,7 @@ import AppContext from "./AppContext";
 
 export default function AppState(props){
     let [userName,setUserName] = useState("Arjit Verma");
+    let [curentYear,setCurrentYear ] = useState(2022)
 
     function addTwoNumbers(num1,num2){
         console.log(num1+num2);
@@ -16,7 +17,9 @@ export default function AppState(props){
         <AppContext.Provider value={{
             userName,
             setUserName,
-            addTwoNumbers
+            addTwoNumbers,
+            curentYear,
+            setCurrentYear
         }}>
             {props.children}
         </AppContext.Provider>

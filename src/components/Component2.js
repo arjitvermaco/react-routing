@@ -9,6 +9,7 @@ export default function Component2() {
   return (
     <div>
        Username from component 2 is : {appContext.userName}
+       curent year is from component 2 : {appContext.curentYear}
         <Component4/>
     </div>
   )
