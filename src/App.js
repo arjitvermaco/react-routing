@@ -1,28 +1,23 @@
-import { useContext, useState } from "react";
-import Component1 from "./components/Component1";
-import Component2 from "./components/Component2";
-import AppContext from "./Context/AppContext/AppContext";
-
-function App() {
-
-
-  let appContext = useContext(AppContext);
-
-  console.log(appContext)
-  
+import React from 'react'
+import Header from './components/Header'
+import HomePage from './pages/HomePage';
+import CategoryPage from './pages/CategoryPage';
+import ProductPage from './pages/ProductPage';
+import CheckoutPage from './pages/CheckoutPage';
+import { Route, Routes } from 'react-router-dom';
+export default function App() {
   return (
-    <div className="body-wrapper">
-      {appContext.userName}
-      <button onClick={()=>{
-        appContext.setUserName("Rahul Singh")
-      }}>
-        Click Me
-      </button>
-      <Component2/>
-
-      <p>The current year is : {appContext.curentYear}</p>
+    <div className=''>
+      <Header/>
+      <div className='pt-16'>
+      <Routes>
+        <Route index element={<HomePage/>}/>
+        <Route path="category/:id" element={<CategoryPage/>}/>
+        <Route path="product/:id" element={<ProductPage/>}/>
+        <Route path="checkout" element={<CheckoutPage/>}/>
+      </Routes>
+      </div>
+      
     </div>
-  );
+  )
 }
-
-export default App;
