@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AppContext from "../Context/AppContext/AppContext";
 
 export default function ProductCard(props) {
+
+  let appContext = useContext(AppContext)
+
   return (
    
     <div className="w-1/4 border border-transparent shadow-lg mr-4 mt-4 p-8 rounded-md flex flex-col justify-between hover:shadow-2xl hover:border hover:border-blue-600">
@@ -21,7 +25,10 @@ export default function ProductCard(props) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-6 h-6 cursor-pointer"
+            onClick={()=>{
+              appContext.addProductToCart(props.product)
+            }}
           >
             <path
               strokeLinecap="round"

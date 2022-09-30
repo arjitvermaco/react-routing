@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import AppContext from '../Context/AppContext/AppContext';
 
 export default function ProductPage() {
 
@@ -32,6 +33,7 @@ export default function ProductPage() {
 
 
 function ProductDetails(props){
+  let appContext = useContext(AppContext);
   return(
     <div className='flex'>
       <div className='w-1/2'>
@@ -44,7 +46,9 @@ function ProductDetails(props){
         <span className='capitalize bg-blue-400'>{props.product.category}</span>
         <div className='flex justify-between'>
         <h3 className='roboto text-lg mt-4'>Rating: {props.product.rating.rate}</h3>
-        <button className='bg-blue-600 text-white px-4 py-2 rounded-sm'>Add To Cart</button>
+        <button className='bg-blue-600 text-white px-4 py-2 rounded-sm' onClick={()=>{
+          appContext.addProductToCart(props.product)
+        }}>Add To Cart</button>
         </div>
         
       </div>

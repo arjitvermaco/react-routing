@@ -2,6 +2,9 @@ import React from 'react'
 
 export default function CheckoutPage() {
   return (
-    <div>CheckoutPage</div>
+    <div>
+      {/* Form with address details  */}
+{/* Payment options */}
+    </div>
   )
 }
